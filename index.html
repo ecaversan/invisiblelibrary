@@ -1,0 +1,101 @@
+<!DOCTYPE=html>
+<html>
+<meta http-equiv="Content-type" content="text/html;charset=ISO-8859-1" />
+<link rel="shortcut icon" href="icon.ico">
+<head>
+<link rel="stylesheet" type="text/css" href="html5.css">
+</head>
+<title>::HTML 5 - Bem Vindo::</title>
+<script>
+
+	    var contador = 0 ; 
+	    var timer = "" ;
+	    var bController = true ;
+
+		function startRotation() {
+			if (bController) {timer = window.setInterval(rotaciona,50);}
+			bController = false ;
+		}
+
+		function rotaciona() {
+			
+			img = document.getElementById('vint');
+
+			img.style.MozTransform = "rotate(" + contador + "deg) translateY(-0%)";
+
+			if (contador==359) {contador = 0 ;} else {contador=contador+8 ;}
+				
+		}
+
+		function stopRotation() {
+			window.clearInterval(timer)
+			bController = true ;
+		}
+
+		window.onscroll = scrollInformation ;
+
+		function scrollInformation() {
+			txtScroll = document.getElementById('scrollValue') ;
+			txtScroll.innerHTML = "Informações do Scroll: " + window.pageXOffset + "-" + window.pageYOffset  ;
+			img = document.getElementById('vint_section');
+			img.style.MozTransform = "rotate(" + window.pageYOffset * 4 + "deg) translateY(-0%)";
+			
+		}
+		
+	</script>
+<body>
+	<div id="todo">
+		<div id="topo">
+			<div id="logo">
+				<object id="vint" class="img-logo" type="image/svg+xml" data="images/vint.svg"></object>
+			</div>
+			Aqui pode ser uma imagem de background e um texto.
+		</div>
+		<div id="meio">
+			<div id="esquerda">
+				<div id="menu">
+					<div class="itemMenu">Principal</div>
+					<div class="itemMenu">Empresa</div>
+					<div class="itemMenu">Produtos</div>
+					<div class="itemMenu">Serviços</div>
+					<div class="itemMenu">Contato</div>
+				</div>
+			</div>
+
+			<div id="miolo">
+				<div class="secao_miolo">Seção 1</div>
+				<div class="secao_miolo"><object id="vint_section" class="img-logo" type="image/svg+xml" data="images/vint_section.svg"></object></div>
+				<div class="secao_miolo"><div id="scrollValue"></div></div>
+				<div class="secao_miolo">
+					<br>
+					<br>
+					<button id="bt_rotate" onclick="startRotation()"
+						class="but but-shadow but-rc but-success">Inicio</button>
+
+					<button id="bt_stopRotate" onclick="stopRotation()"
+						class="but but-shadow but-rc but-error">Fim</button>
+					<br>
+					<br> <a class="but but-shadow but-rc but-primary"
+						href="gridLayout.html" target="_blank">Primary Button</a> 
+						<a class="but but-shadow but-rc but-warning" href="javascript:scrollInformation();">Warning Button</a>
+				</div>
+			</div>
+
+			<div id="direita">
+				<div class="secao_direita">Seção 1</div>
+				<div class="secao_direita">Seção 2</div>
+				<div class="secao_direita">Seção 3</div>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+
+		<div id="rodape">
+			<div id="rodape_direita">
+				Av. xxx yyy zzz, No 765<br /> Manaus - AM - CEP: 89000-000<br />
+				Email: <a href="mailto:seuemail@seudominio.com.br">seuemail@seudominio.com.br</a>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>
